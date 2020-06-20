@@ -1,12 +1,14 @@
 pipeline {
-	agent { docker {image 'maven:3.6.3'} }
-	//agent any
+	//agent { docker {image 'maven:3.6.3'} }
+	agent any
 	stages {
 		stage('Build') {
 			steps {
-				sh 'mvn --version'
-				sh 'whoami'
 				echo 'build'
+				echo '$PATH'
+				echo "build number - $env.BUILD_NUMBER"
+				echo "Job Name - $env.JOB_NAME"
+				echo "Build URL - $env.BUILD_URL"				
 			}
 		}	
 		stage('Test') {
